@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 const config = require('config');
 const db = config.get('mongoURI');
+const chalk = require('chalk');
 
 const connectDB = async () => {
   try {
     await mongoose.connect(db, {
-      useNewurlParser: true,
+      useNewUrlParser: true,
       useCreateIndex: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      useUnifiedTopology: true
     });
 
-    console.log('MongoDB Connected...');
+    console.log(chalk.cyanBright('MongoDB Connected...'));
   } catch (err) {
     console.error(err.message);
     process.exit(1);

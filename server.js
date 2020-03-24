@@ -10,7 +10,6 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-
 app.get('/', (req, res) =>
   res.json({ msg: 'Welcome to the ContactKeeper API...' })
 );
@@ -22,4 +21,6 @@ app.use('/api/contacts', require('./routes/contacts'));
 
 const PORT = process.env.PORT || 5001;
 
-app.listen(PORT, () => console.log(chalk.magenta(`Server started on port ${PORT}`)));
+app.listen(PORT, () =>
+  console.log(chalk.magenta(`Server started on port ${PORT}`))
+);

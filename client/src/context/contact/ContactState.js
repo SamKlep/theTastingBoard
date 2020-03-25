@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
 import {
@@ -28,6 +28,13 @@ const ContactState = props => {
         email: 'dDawg@gmail.com',
         phone: '222-222-2222',
         type: 'personal'
+      },
+      {
+        id: 2,
+        name: 'Dr. Jeff Jefferies',
+        email: 'drJJ@gmail.com',
+        phone: '333-333-3333',
+        type: 'professional'
       }
     ]
   };
@@ -54,7 +61,7 @@ const ContactState = props => {
         contacts: state.contacts
       }}
     >
-      {props.childern}
+      {props.children}
     </ContactContext.Provider>
   );
 };

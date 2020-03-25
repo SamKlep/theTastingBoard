@@ -24,14 +24,14 @@ const ContactForm = () => {
         onChange={onChange}
       />
       <input
-        type='email'
+        type='text'
         placeholder='Email'
         name='email'
         value={email}
         onChange={onChange}
       />
       <input
-        type='phone'
+        type='text'
         placeholder='Phone'
         name='phone'
         value={phone}

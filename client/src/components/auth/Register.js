@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
@@ -7,8 +7,14 @@ const Register = () => {
   const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
+  const { register, error, clearErrors } = authContext;
 
-  const { register } = authContext;
+  useEffect(() => {
+    if (error === 'User already exists') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+  }, [error]);
 
   const [user, setUser] = useState({
     name: '',
@@ -39,7 +45,7 @@ const Register = () => {
   return (
     <div className='form-container'>
       <h1>
-        Account <spav className='text-primary'>Register</spav>
+        Account <span className='text-primary'>Register</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className='form-group'>

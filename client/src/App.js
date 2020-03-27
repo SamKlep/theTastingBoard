@@ -7,11 +7,15 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 
-
 import ContactState from './context/contact/ContactState';
 import AuthtState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import setAuthToken from './utils/setAuthToken';
 import './App.css';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   return (

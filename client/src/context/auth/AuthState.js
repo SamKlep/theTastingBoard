@@ -4,7 +4,6 @@ import AuthContext from './authContext';
 import authReducer from './authReducer';
 import setAuthToken from '../../utils/setAuthToken';
 import {
-  REMOVE_ALERT,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,

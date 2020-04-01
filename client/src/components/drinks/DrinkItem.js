@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import ContactContext from '../../context/contact/contactContext';
+import DrinkContext from '../../context/drink/drinkContext';
 
-const ContactItem = ({ contact }) => {
-  const contactContext = useContext(ContactContext);
-  const { deleteContact, setCurrent, clearCurrent } = contactContext;
+const DrinkItem = ({ drink }) => {
+  const drinkContext = useContext(DrinkContext);
+  const { deleteDrink, setCurrent, clearCurrent } = drinkContext;
 
-  const { _id, name, email, phone, type } = contact;
+  const { _id, name, type, date, description, rating } = drink;
 
   const onDelete = () => {
-    deleteContact(_id);
+    deleteDrink(_id);
     clearCurrent();
   };
 
@@ -28,21 +28,23 @@ const ContactItem = ({ contact }) => {
         </span>
       </h3>
       <ul className='list'>
-        {email && (
+        {type && (
           <li>
-            <i className='fas fa-envelope-open'></i> {email}
+            <i className='fas fa-envelope-open'></i> {type}
           </li>
         )}
-        {phone && (
+        {date && (
           <li>
-            <i className='fas fa-phone'></i> {phone}
+            <i className='fas fa-phone'></i> {date}
           </li>
         )}
+        <li>{description} </li>
+        <li>{rating} </li>
       </ul>
       <p>
         <button
           className='btn btn-dark btn-sm'
-          onClick={() => setCurrent(contact)}
+          onClick={() => setCurrent(drink)}
         >
           Edit
         </button>
@@ -54,8 +56,8 @@ const ContactItem = ({ contact }) => {
   );
 };
 
-ContactItem.propTypes = {
-  contact: PropTypes.object.isRequired
+DrinkItem.propTypes = {
+  drink: PropTypes.object.isRequired
 };
 
-export default ContactItem;
+export default DrinkItem;

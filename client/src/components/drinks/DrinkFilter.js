@@ -1,11 +1,11 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import ContactContext from '../../context/contact/contactContext';
+import DrinkContext from '../../context/drink/drinkContext';
 
-const ContactFilter = () => {
-  const contactContext = useContext(ContactContext);
+const DrinkFilter = () => {
+  const drinkContext = useContext(DrinkContext);
   const text = useRef('');
 
-  const { filterContacts, clearFilter, filtered } = contactContext;
+  const { filterDrinks, clearFilter, filtered } = drinkContext;
 
   useEffect(() => {
     if (filtered === null) {
@@ -15,7 +15,7 @@ const ContactFilter = () => {
 
   const onChange = e => {
     if (text.current.value !== '') {
-      filterContacts(e.target.value);
+      filterDrinks(e.target.value);
     } else {
       clearFilter();
     }
@@ -26,11 +26,11 @@ const ContactFilter = () => {
       <input
         ref={text}
         type='text'
-        placeholder='Filter Contacts...'
+        placeholder='Filter Drinks...'
         onChange={onChange}
       ></input>
     </form>
   );
 };
 
-export default ContactFilter;
+export default DrinkFilter;

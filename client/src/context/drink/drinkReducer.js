@@ -1,50 +1,48 @@
 import {
-  GET_CONTACTS,
-  ADD_CONTACT,
-  DELETE_CONTACT,
+  GET_DRINKS,
+  ADD_DRINK,
+  DELETE_DRINK,
   SET_CURRENT,
   CLEAR_CURRENT,
-  CLEAR_CONTACTS,
-  UPDATE_CONTACT,
-  FILTER_CONTACTS,
+  CLEAR_DRINKS,
+  UPDATE_DRINK,
+  FILTER_DRINKS,
   CLEAR_FILTER,
-  CONTACT_ERROR
+  DRINK_ERROR
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_CONTACTS:
+    case GET_DRINKS:
       return {
         ...state,
-        contacts: action.payload,
+        drinks: action.payload,
         loading: false
       };
-    case ADD_CONTACT:
+    case ADD_DRINK:
       return {
         ...state,
-        contacts: [action.payload, ...state.contacts],
+        drinks: [action.payload, ...state.drinks],
         loading: false
       };
-    case UPDATE_CONTACT:
+    case UPDATE_DRINK:
       return {
         ...state,
-        contacts: state.contacts.map(contact =>
-          contact._id === action.payload._id ? action.payload : contact
+        drinks: state.drinks.map(drink =>
+          drink._id === action.payload._id ? action.payload : drink
         ),
         loading: false
       };
-    case DELETE_CONTACT:
+    case DELETE_DRINK:
       return {
         ...state,
-        contacts: state.contacts.filter(
-          contact => contact._id !== action.payload
-        ),
+        drinks: state.drinks.filter(drink => drink._id !== action.payload),
         loading: false
       };
-    case CLEAR_CONTACTS:
+    case CLEAR_DRINKS:
       return {
         ...state,
-        contacts: null,
+        drinks: null,
         filtered: null,
         error: null,
         current: null
@@ -59,12 +57,12 @@ export default (state, action) => {
         ...state,
         current: null
       };
-    case FILTER_CONTACTS:
+    case FILTER_DRINKS:
       return {
         ...state,
-        filtered: state.contacts.filter(contact => {
+        filtered: state.drinks.filter(drink => {
           const regex = new RegExp(`${action.payload}`, 'gi');
-          return contact.name.match(regex) || contact.email.match(regex);
+          return drink.name.match(regex) || drink.type.match(regex);
         })
       };
     case CLEAR_FILTER:
@@ -72,7 +70,7 @@ export default (state, action) => {
         ...state,
         filtered: null
       };
-    case CONTACT_ERROR:
+    case DRINK_ERROR:
       return {
         ...state,
         error: action.payload

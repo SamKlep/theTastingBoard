@@ -2,8 +2,9 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #df8d12;
-  --dark-color: #333333;
+  --primary-color: #E17701;
+  --mid-color: rgb(0, 0, 0);
+  --dark-color: rgb(117, 48, 2);
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -19,7 +20,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  background-color: rgb(255, 244, 232);
   color: #333;
 }
 
@@ -38,6 +39,10 @@ ul {
 
 img {
   width: 100%;
+}
+
+.contact-btn {
+  color: #C65102;
 }
 
 /* Utilities */

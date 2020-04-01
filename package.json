@@ -1,7 +1,7 @@
 {
-  "name": "contact-keeper",
+  "name": "tasting-board",
   "version": "1.0.0",
-  "description": "Contact manager app",
+  "description": "Social app to log drinks",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
